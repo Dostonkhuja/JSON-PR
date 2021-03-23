@@ -1,0 +1,9 @@
+.UserHeader{
+    justify-content: space-between;
+    display:flex;
+}
+
+.message{
+    cursor: pointer;
+    margin-left: 15px;
+}

@@ -1,0 +1,11 @@
+.mainPhoto{
+    width: 100px;
+}
+.comments{
+    cursor: pointer;
+}
+
+.commentsLike{
+    display:flex;
+    justify-content: space-between;
+}

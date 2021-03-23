@@ -1,0 +1,10 @@
+.albumsContaiener{
+    display:flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.album{
+    margin-right: 0.35vw;
+    margin-left: 0.35vw;
+    margin-top: 2vw;
+}

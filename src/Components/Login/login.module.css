@@ -1,0 +1,43 @@
+.title{
+    margin-left: 7.5vw;
+    margin-bottom: 1vw;
+}
+
+.error{
+    border-radius:5px ;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    color: red;
+    width: 565px;
+    margin-left: 14vw;
+    border: 1px solid red;
+}
+
+.inputItem{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inputItemTextarea{
+    width: 30vw;
+}
+.form{
+    margin-left: 22vw;
+    width: 280px;
+}
+
+.signUpButton{
+    margin-top: 1vw;
+    margin-left: 7.5vw;
+}
+
+.rememberMe{
+    margin-left: 7vw;
+}
+
+.wrapperFormData{
+    width: 280px;
+}

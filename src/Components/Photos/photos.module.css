@@ -1,0 +1,21 @@
+.photosContainer{
+    display:flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.photo{
+    margin-right: 0.35vw;
+    margin-left: 0.35vw;
+    margin-top: 2vw;
+}
+
+.contentStyle{
+    width: 985px;
+    height: 160px;
+}
+.corusel{
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    margin-left: 0.5vw;
+    width: 985px;
+}
