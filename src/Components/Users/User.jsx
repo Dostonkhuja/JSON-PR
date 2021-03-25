@@ -22,7 +22,9 @@ const User=React.memo( (props)=> {
                     }
 
                     <span className={s.message}>
+                        <Link to={`/dialogs/${props.user.id}`}>
                         <MailOutlined />
+                        </Link>
                     </span>
 
                 </div>

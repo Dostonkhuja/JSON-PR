@@ -41,7 +41,7 @@ function App() {
                         <Route path='/albums' render={withSuspense(AlbumsContainer)}/>
                         <Route path='/photos' render={withSuspense(PhotosContainer)}/>
                         <Route path='/posts' render={withSuspense(PostsContainer)}/>
-                        <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                        <Route path='/dialogs/:userId?' render={withSuspense(DialogsContainer)}/>
                         <Route path='/signin' render={withSuspense(SignIn)}/>
                         <Route path='/signup' render={withSuspense(SignUp)}/>
 

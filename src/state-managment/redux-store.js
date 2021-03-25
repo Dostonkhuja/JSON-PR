@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import commentsReducer from "../reducers/comments-reducer";
 import profileReducer from "../reducers/profile-reducer";
@@ -11,6 +9,7 @@ import userReducer from "../reducers/users-reducer";
 import thunkMiddleware from 'redux-thunk'
 import authReducer from "../reducers/auth-reducer";
 import {reducer as formReducer} from 'redux-form'
+import dialogsReducer from "../reducers/dialogs-reducer";
 
 const reducers = combineReducers({
     toDoListsPage:todoListReducer,
@@ -20,6 +19,7 @@ const reducers = combineReducers({
     postsPage:postsReducers,
     albumsPage:albumReducer,
     usersPage:userReducer,
+    dialogsPage:dialogsReducer,
     auth:authReducer,
     form:formReducer
 })

@@ -42,7 +42,7 @@ const todoListReducer = (state = initialState, action) => {
                 ...state,
                 patchingInProgress: action.isPatching
                     ? [...state.patchingInProgress, action.id]
-                    : [...state.patchingInProgress.filter(id => id != action.id)]
+                    : [...state.patchingInProgress.filter(id => id !== action.id)]
             }
 
         default:return state
