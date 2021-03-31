@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/ToDoLists/todo.module.css"],"names":[],"mappings":"AAAA,sBACI,gBACJ","file":"5.1f6e1fb1.chunk.css","sourcesContent":[".checkBox{\r\n    padding-top: 10px;\r\n}"]}
