@@ -1,13 +1,11 @@
-import React from 'react'
-
 import {todoAPI} from "../DAL/api";
 
-const TOGGLE_IS_PATCHING = 'TOGGLE_IS_PATCHING'
-const CHANGE_TODO_LIST = 'CHANGE_TODO_LIST'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-const GET_TODO_LISTS = 'GET_TODO_LISTS'
-const SET_TODO_LIST = 'SET_TODO_LIST'
-const SET_PAGE_SIZE = 'SET_PAGE_SIZE'
+const TODO_TOGGLE_IS_PATCHING = 'TODO_TOGGLE_IS_PATCHING'
+const TODO_CHANGE_TODO_LIST = 'TODO_CHANGE_TODO_LIST'
+const TODO_SET_CURRENT_PAGE = 'TODO_SET_CURRENT_PAGE'
+const TODO_GET_TODO_LISTS = 'TODO_GET_TODO_LISTS'
+const TODO_SET_TODO_LIST = 'TODO_SET_TODO_LIST'
+const TODO_SET_PAGE_SIZE = 'TODO_SET_PAGE_SIZE'
 
 const initialState = {
     patchingInProgress: [],
@@ -18,16 +16,16 @@ const initialState = {
 
 const todoListReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_TODO_LISTS:
+        case TODO_GET_TODO_LISTS:
             return {...state, toDoLists: action.todoLists}
-        case CHANGE_TODO_LIST:
+        case TODO_CHANGE_TODO_LIST:
             return {...state, toDoLists: [...action.payload.filter(t => t.completed === action.set)]}
-        case SET_PAGE_SIZE:
+        case TODO_SET_PAGE_SIZE:
             return {...state, pageSize: action.pageSize}
-        case SET_CURRENT_PAGE:
+        case TODO_SET_CURRENT_PAGE:
             let currentPageOrginal = action.currentPage - 1
             return {...state, currentPage: currentPageOrginal}
-        case SET_TODO_LIST:
+        case TODO_SET_TODO_LIST:
             return {
                 ...state, toDoLists: state.toDoLists.map(t => {
                         if (t["id"] === action.payload.id) {
@@ -37,7 +35,7 @@ const todoListReducer = (state = initialState, action) => {
                     }
                 )
             }
-        case TOGGLE_IS_PATCHING:
+        case TODO_TOGGLE_IS_PATCHING:
             return {
                 ...state,
                 patchingInProgress: action.isPatching
@@ -51,13 +49,13 @@ const todoListReducer = (state = initialState, action) => {
 };
 
 //action creators start
-const setCurrentPageSuccess = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-const changeToDolistSuccess = (payload, set) => ({type: CHANGE_TODO_LIST, payload, set})
-const getTodoListSuccess = (todoLists) => ({type: GET_TODO_LISTS, todoLists})
-const setPageSizeSuccess = (pageSize) => ({type: SET_PAGE_SIZE, pageSize})
-const setToDoList = (payload) => ({type: SET_TODO_LIST, payload})
+const setCurrentPageSuccess = (currentPage) => ({type: TODO_SET_CURRENT_PAGE, currentPage})
+const changeToDolistSuccess = (payload, set) => ({type: TODO_CHANGE_TODO_LIST, payload, set})
+const getTodoListSuccess = (todoLists) => ({type: TODO_GET_TODO_LISTS, todoLists})
+const setPageSizeSuccess = (pageSize) => ({type: TODO_SET_PAGE_SIZE, pageSize})
+const setToDoList = (payload) => ({type: TODO_SET_TODO_LIST, payload})
 export const togglePatchingProgress = (isPatching, id) => {
-    return {type: TOGGLE_IS_PATCHING, isPatching, id}
+    return {type: TODO_TOGGLE_IS_PATCHING, isPatching, id}
 }
 //action creators end
 

@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {getPosts, updateCurrentPage, updatePageSize} from "../../reducers/posts-reducer";
-import {connect} from "react-redux";
-import {compose} from "redux";
 import Posts from "./Posts";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {getPosts, updateCurrentPage, updatePageSize} from "../../reducers/posts-reducer";
+import {getPostsCurrentPageRs, getPostsPageSizeRs, getPostsRs} from "../../reselect/PostsReselect";
 
 class PostsContainer extends React.Component {
     componentDidMount() {
@@ -11,22 +12,20 @@ class PostsContainer extends React.Component {
     }
 
     render() {
-        return (
-            <Posts
+        return <Posts
                 updateCurrentPage={this.props.updateCurrentPage}
                 updatePageSize={this.props.updatePageSize}
                 currentPage={this.props.currentPage}
                 pageSize={this.props.pageSize}
                 posts={this.props.posts}
             />
-        );
     };
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.postsPage.posts,
-    pageSize: state.postsPage.pageSize,
-    currentPage: state.postsPage.currentPage,
+    posts: getPostsRs(state),
+    pageSize: getPostsPageSizeRs(state),
+    currentPage: getPostsCurrentPageRs(state),
 })
 
 export default compose(

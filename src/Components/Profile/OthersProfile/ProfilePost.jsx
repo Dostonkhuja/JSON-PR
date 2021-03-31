@@ -1,7 +1,8 @@
 import React, {createElement, useState} from 'react';
+
 import {Card, Tooltip} from "antd";
-import s from '../Profile/profile.module.css'
-import ProfileCommentsContainer from "./ProfileComments/ProfileCommentsContainer";
+import s from '../profile.module.css'
+import ProfileCommentsContainer from "../ProfileComments/ProfileCommentsContainer";
 import {DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, MessageOutlined} from "@ant-design/icons";
 
 const ProfilePost = React.memo((props) => {
@@ -31,11 +32,9 @@ const ProfilePost = React.memo((props) => {
                 <i>{props.post.body}</i>
                 <br/> <br/>
                 <div className={s.commentsLike}>
-                    <div className={s.comments} onClick={() => {
-                        editMode ? setEditMode(false) : setEditMode(true)
-                    }}>
-                        <MessageOutlined/> Comments
-                    </div>
+                    <div className={s.comments}
+                         onClick={() => {editMode ? setEditMode(false) : setEditMode(true)}}>
+                        <MessageOutlined/> Comments </div>
                     <div>
                         <Tooltip key="comment-basic-like" title="Like">
       <span onClick={like}>
@@ -51,16 +50,15 @@ const ProfilePost = React.memo((props) => {
                         </Tooltip>
                     </div>
                 </div>
-                {editMode &&
-                <ProfileCommentsContainer getComments={props.getComments} comments={props.comments}
-                                          postId={props.post.id}/>
+                {
+                    editMode &&
+                    <ProfileCommentsContainer
+                        getComments={props.getComments}
+                        comments={props.comments}
+                        postId={props.post.id}/>
                 }
-
             </Card>
-
             <br/>
-
-
         </div>
     );
 });

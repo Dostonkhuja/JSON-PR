@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+import {Spin} from "antd";
 import ProfileComments from "./ProfileComments";
 
 class ProfileCommentsContainer extends Component {
@@ -8,14 +10,13 @@ class ProfileCommentsContainer extends Component {
     }
 
     render() {
-        if(this.props.comments === null){
-            return <div>loading...</div>
-        }
-        return (
-            <div>
-                {this.props.comments.map(c=> c.postId === this.props.postId && <ProfileComments comments={c} key={c.id} />)}
+        if(this.props.comments === null){return <Spin size="large" />}
+        return <div>
+                {
+                    this.props.comments.map(c=> c.postId === this.props.postId &&
+                    <ProfileComments comments={c} key={c.id} />)
+                }
             </div>
-        );
     }
 }
 

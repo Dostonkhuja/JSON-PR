@@ -1,9 +1,9 @@
 import {dialogsAPI} from "../DAL/api";
 import {reset} from "redux-form";
 
-const GET_USER_MESSAGES = 'FOLLOW'
-const CURRENT_USER = 'CURRENT_USER'
-const SET_MESSAGE = 'SET_MESSAGE'
+const DIALOGS_GET_USER_MESSAGES = 'DIALOGS_GET_USER_MESSAGES'
+const DIALOGS_CURRENT_USER = 'DIALOGS_CURRENT_USER'
+const DIALOGS_SET_MESSAGE = 'DIALOGS_SET_MESSAGE'
 
 const initialState = {
     userMessages: [],
@@ -12,15 +12,14 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_USER_MESSAGES:
+        case DIALOGS_GET_USER_MESSAGES:
             return {
                 ...state,
                 userMessages: [action.userMessages, ...state.userMessages.filter(us => {
                     return us.id !== action.userMessages.id
                 })]
             }
-            return {...state, currentUser: []}
-        case CURRENT_USER:
+        case DIALOGS_CURRENT_USER:
             return {
                 ...state, currentUser: [
                     {userId: action.userId}, {userName: action.userName},
@@ -29,7 +28,7 @@ const dialogsReducer = (state = initialState, action) => {
                                 .map(um => {return um.messages.map(m => {return m})} )
                         }}]
             }
-        case SET_MESSAGE:
+        case DIALOGS_SET_MESSAGE:
             return {
                 ...state, userMessages: [...state.userMessages.map(u => {
                     if (u.id === action.userId) {
@@ -46,21 +45,23 @@ const dialogsReducer = (state = initialState, action) => {
 
 //action creators start
 export const currentUserSuccess = (userId, userName) => {
-    return {type: CURRENT_USER, userId, userName}
+    return {type: DIALOGS_CURRENT_USER, userId, userName}
 }
 export const setMessagesSuccess = (userId, messages) => {
-    return {type: SET_MESSAGE, userId, messages}
+    return {type: DIALOGS_SET_MESSAGE, userId, messages}
 }
 export const getUserMessagesSuccess = (userMessages) => {
-    return {type: GET_USER_MESSAGES, userMessages}
+    return {type: DIALOGS_GET_USER_MESSAGES, userMessages}
 }
 //action creators end
 
 //thunk start
 export const getUserMessages = (userId) => async dispatch => {
-    const response = await dialogsAPI.getUserMessages(userId)
-    if (response.status === 200) {
-        dispatch(getUserMessagesSuccess(response.data))
+    if(userId !== undefined) {
+        const response = await dialogsAPI.getUserMessages(userId)
+        if (response.status === 200) {
+            dispatch(getUserMessagesSuccess(response.data))
+        }
     }
 }
 export const sendMessage = (userId, messages) => async dispatch => {

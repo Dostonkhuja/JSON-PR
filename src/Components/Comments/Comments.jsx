@@ -1,9 +1,10 @@
 import React from 'react';
+
 import Comment from "./Comment";
-import {Pagination} from "antd";
+import {Pagination,Spin} from "antd";
 
 const Comments = (props) => {
-    if(props.comments===null){return <div>Loading...</div>}
+    if(props.comments===null){return <Spin size="large" />}
     let onPaginationValueChange=(pageNumber, pageSize,)=> {
         props.updateCurrentPage(pageNumber)
         props.updatePageSize(pageSize)

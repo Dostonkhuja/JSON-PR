@@ -1,15 +1,16 @@
 import React from 'react';
-import Photo from "./Photo";
+
+import {Carousel, Pagination, Spin} from 'antd';
 import s from './photos.module.css'
-import {Carousel, Pagination} from 'antd';
+import Photo from "./Photo";
 import 'antd/dist/antd.css'
 
 const Photos = (props) => {
+    if  (props.photos.length<1) {
+        return <Spin size="large" />
+    }
 
-    if  (props.photos.length<1)
-    {return <div>Loading...</div>}
-
-   const onPaginationValueChange=(pageNumber, pageSize,)=> {
+    const onPaginationValueChange=(pageNumber, pageSize,)=> {
         props.updateCurrentPage(pageNumber)
         props.updatePageSize(pageSize)
     }

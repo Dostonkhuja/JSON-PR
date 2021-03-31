@@ -3,14 +3,21 @@ import React, {PureComponent} from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
-import {getComments, getPosts, getProfile} from "../../reducers/profile-reducer";
 import MyProfile from "./MyProfile/MyProfile";
+import OtherProfile from "./OthersProfile/OtherProfile";
 import {savePhoto, setMyProfile} from "../../reducers/auth-reducer";
-import OtherProfile from "./OtherProfile";
+import {getComments, getPosts, getProfile} from "../../reducers/profile-reducer";
+import {
+    getProfileCommentsRs,
+    getProfilePostsRs,
+    getProfileRs,
+    getProfileSignInRs,
+    getUserPhotoRs
+} from "../../reselect/ProfileReselect";
 
 class ProfileContainer extends PureComponent {
     refreshProfile() {
-        let userId = this.props.match.params.userId;
+        let userId = this.props.match.params.userId
         if (!userId) {
             if (this.props.signIn !== null) {
                 userId = this.props.signIn.id
@@ -22,6 +29,7 @@ class ProfileContainer extends PureComponent {
         this.props.getProfile(userId)
         this.props.getPosts(userId)
     }
+
     componentDidMount() {
         this.refreshProfile()
     }
@@ -35,16 +43,16 @@ class ProfileContainer extends PureComponent {
                     <MyProfile
                         signIn={this.props.signIn}
                         savePhoto={this.props.savePhoto}
-                        setMyProfile={this.props.setMyProfile}
                         userPhoto={this.props.userPhoto}
+                        setMyProfile={this.props.setMyProfile}
                     />
                 }
                 {
                     this.props.match.params.userId !== undefined &&
                     <OtherProfile
-                        comments={this.props.comments}
-                        profile={this.props.profile}
                         posts={this.props.posts}
+                        profile={this.props.profile}
+                        comments={this.props.comments}
                         getComments={this.props.getComments}
                     />
                 }
@@ -54,14 +62,14 @@ class ProfileContainer extends PureComponent {
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    posts: state.profilePage.posts,
-    signIn: state.auth.signIn,
-    userPhoto:state.auth.userPhoto,
-    comments:state.profilePage.comments,
+    profile: getProfileRs(state),
+    posts: getProfilePostsRs(state),
+    userPhoto: getUserPhotoRs(state),
+    signIn: getProfileSignInRs(state),
+    comments: getProfileCommentsRs(state),
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getPosts,setMyProfile,savePhoto,getComments}),
+    connect(mapStateToProps, {getProfile, getPosts, setMyProfile, savePhoto, getComments}),
     withRouter
 )(ProfileContainer);

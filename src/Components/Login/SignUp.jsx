@@ -1,13 +1,15 @@
 import React from 'react';
-import s from './login.module.css'
+
 import {Button} from 'antd';
 import {compose} from "redux";
+import s from './login.module.css'
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 import {reduxForm} from "redux-form";
+import {Redirect} from "react-router-dom";
+import {getIsAuth} from "../../reselect/LoginReselect";
 import {setMyProfile} from "../../reducers/auth-reducer";
-import {createField, Input2} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import {createField, Input2} from "../common/FormsControls/FormsControls";
 
 const LoginForm = ({handleSubmit,...props}) => {
 
@@ -67,7 +69,7 @@ const SignUp = ({setMyProfile,isAuth}) => {
 };
 
 const mapStateToProps= (state)=> ({
-    isAuth:state.auth.isAuth
+    isAuth:getIsAuth(state)
 })
 
 export default compose(

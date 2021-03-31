@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {getCommentsCurrentPageRs, getCommentsPageSizeRs, getCommentsRs} from "../../reselect/CommentsReselect";
 import {getComments, updateCurrentPage, updatePageSize} from "../../reducers/comments-reducer";
 import {connect} from "react-redux";
 import Comments from "./Comments";
@@ -9,7 +10,6 @@ class CommentsContainer extends React.Component {
     componentDidMount() {
         this.props.getComments()
     }
-
     render() {
         return (
             <div>
@@ -26,11 +26,11 @@ class CommentsContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    comments: state.commentsPage.comments,
-    pageSize: state.commentsPage.pageSize,
-    currentPage: state.commentsPage.currentPage,
+    comments: getCommentsRs(state),
+    pageSize: getCommentsPageSizeRs(state),
+    currentPage: getCommentsCurrentPageRs(state),
 })
 
 export default compose(
     connect(mapStateToProps, {getComments, updatePageSize, updateCurrentPage})
-) (CommentsContainer);
+)(CommentsContainer);

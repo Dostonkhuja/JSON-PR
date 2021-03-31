@@ -14,7 +14,7 @@ const MyPostsForm =React.memo( (props) => {
                     component={Textarea2}
                 />
             </div>
-            <div> <Button htmlType="submit">ADD POST</Button> </div>
+            <div> <Button type={'primary'} htmlType="submit">ADD POST</Button> </div>
             {props.error && <div>{props.error}</div>}
         </form>
     );

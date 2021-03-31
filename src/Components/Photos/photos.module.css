@@ -13,9 +13,15 @@
     width: 985px;
     height: 160px;
 }
+
 .corusel{
     margin-bottom: 1vw;
     margin-top: 1vw;
     margin-left: 0.5vw;
-    width: 985px;
+    width: 100%;
+}
+
+.photosContainer{
+    display: flex;
+    justify-content: center;
 }

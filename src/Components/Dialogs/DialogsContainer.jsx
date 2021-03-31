@@ -1,39 +1,34 @@
 import React from 'react';
-import Dialogs from "./Dialogs";
+
 import {compose} from "redux";
+import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
+import {Redirect} from "react-router-dom";
 import {getCurrentUser, getUserMessages, sendMessage} from "../../reducers/dialogs-reducer";
+import {getCurrentUserRs, getOwnerRs, getUserMessagesRs} from "../../reselect/DialogsReselect";
 
 class DialogsContainer extends React.PureComponent {
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if (!userId) {
-            if (this.props.owner !== null) {
-                userId = this.props.owner.id
-            }
-            if (!userId) {
-                this.props.history.push("/signin")
-            }
-        }
         this.props.getUserMessages(userId)
     }
-
     render() {
+        if(this.props.owner === null){return <Redirect to={'/signin'}/>}
         return <Dialogs
-            owner={this.props.owner.profile.username}
-            currentUser={this.props.currentUser}
             getCurrentUser={this.props.getCurrentUser}
             userMessages={this.props.userMessages}
+            currentUser={this.props.currentUser}
             sendMessage={this.props.sendMessage}
+            owner={this.props.owner}
         />
     }
 }
 
 const mapStateToProps = state => ({
-    userMessages: state.dialogsPage.userMessages,
-    currentUser: state.dialogsPage.currentUser,
-    owner:state.auth.signIn
+    userMessages: getUserMessagesRs(state),
+    currentUser: getCurrentUserRs(state),
+    owner:getOwnerRs(state)
 })
 
 export default compose(

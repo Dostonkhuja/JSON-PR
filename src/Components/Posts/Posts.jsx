@@ -1,13 +1,16 @@
 import React from 'react';
+
 import Post from "./Post";
-import {Pagination} from "antd";
+import {Pagination, Spin} from "antd";
 
 const Posts = (props) => {
-    if(props.posts===null){return <div>Loading...</div>}
+    if (props.posts === null) {
+        return <Spin size="large"/>
+    }
 
-    let onPaginationValueChange=(pageNumber, pageSize,)=> {
-       props.updateCurrentPage(pageNumber)
-       props.updatePageSize(pageSize)
+    let onPaginationValueChange = (pageNumber, pageSize,) => {
+        props.updateCurrentPage(pageNumber)
+        props.updatePageSize(pageSize)
     }
     return (
         <div>
@@ -18,9 +21,11 @@ const Posts = (props) => {
                 total={props.posts.length}
                 onChange={onPaginationValueChange}
             />
-            {props.posts
-                .slice(props.currentPage * props.pageSize,props.currentPage * props.pageSize + props.pageSize)
-                .map(p=> <Post posts={p} key={p.id} />)}
+            {
+                props.posts
+                    .slice(props.currentPage * props.pageSize, props.currentPage * props.pageSize + props.pageSize)
+                    .map(p => <Post posts={p} key={p.id}/>)
+            }
         </div>
     );
 };

@@ -31,7 +31,8 @@ export const todoAPI={
 
 export const albumsAPI={
     getAlbums() {return instance.get('/albums')},
-    getPhotosAlbum(albumId){return instance.get(`photos?albumId=${albumId}`)}
+    getPhotosAlbum(albumId){ debugger
+        return instance.get(`photos?albumId=${albumId}`)}
 }
 
 export const dialogsAPI={
@@ -39,11 +40,13 @@ export const dialogsAPI={
     sendMessage(userId,messages){return instance.patch(`users/${userId}`,{messages} )}}
 
 export const profileAPI={
+    // getProfile(userId) {return instance.patch(`users/${userId}`,{followed:false} )},
     getProfile(userId) {return instance.get(`users?id=${userId}`)},
     getPosts(userId) {return instance.get(`posts?userId=${userId}`)},
     getComments(postId) {return instance.get(`comments?postId=${postId}`)},
     addNewPost(newPost) {return instance.post(`posts`,newPost)},
 }
+
 export const authAPI={
     signInRequest(username,password,remember) {
         return instance.post(`users`,{profile:{username,password,remember,
@@ -54,9 +57,7 @@ export const authAPI={
     logout(userId) {return instance.delete(`users/${userId}`)},
     savePhoto(userPhoto) {
         return userPhoto
-        //JsonPlaceholder saytiga rasm joylay olmadim. mabodo yo'lini topsam o'rnatib qo'yaman
         //I could not upload an image to JsonPlaceholder. I'll set it up if I find a way
-
         // const formData = new FormData();
         // formData.append("image", userPhoto);
         // return instance.put(`photos`,formData,{
@@ -64,7 +65,5 @@ export const authAPI={
         //         'Content-Type': 'multipart/form-data'
         //     }})
         // return instance.put(`photos/1`,userPhoto)
-
-        //JsonPlaceholder saytiga rasm joylay olmadim. mabodo yo'lini topsam o'rnatib qo'yaman
     },
 }

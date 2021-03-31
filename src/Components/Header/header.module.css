@@ -32,3 +32,12 @@
     margin-top: 8px;
     width: 40px;
 }
+
+.logOut{
+    margin-right: 10px;
+}
+
+.menuItem{
+    font-size: 18px;
+    color: black;
+}

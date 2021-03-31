@@ -1,9 +1,8 @@
-import React from 'react'
 import {postsAPI} from "../DAL/api";
 
-const GET_POSTS = 'GET_POSTS'
-const SET_PAGE_SIZE = 'SET_PAGE_SIZE'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const POSTS_GET_POSTS = 'POSTS_GET_POSTS'
+const POSTS_SET_PAGE_SIZE = 'POSTS_SET_PAGE_SIZE'
+const POSTS_SET_CURRENT_PAGE = 'POSTS_SET_CURRENT_PAGE'
 
 const initialState = {
     posts: null,
@@ -13,11 +12,11 @@ const initialState = {
 
 const postsReducers = (state = initialState, action) => {
     switch (action.type) {
-        case GET_POSTS:
+        case POSTS_GET_POSTS:
             return {...state, posts: action.posts}
-        case SET_PAGE_SIZE:
+        case POSTS_SET_PAGE_SIZE:
             return {...state, pageSize: action.pageSize}
-        case SET_CURRENT_PAGE:
+        case POSTS_SET_CURRENT_PAGE:
             let currentPageOrginal = action.currentPage - 1
             return {...state, currentPage: currentPageOrginal}
 
@@ -27,9 +26,9 @@ const postsReducers = (state = initialState, action) => {
 };
 
 //action creators start
-const getPostsSuccess = (posts) => ({type: "GET_POSTS", posts})
-const setPageSizeSuccess = (pageSize) => ({type: "SET_PAGE_SIZE", pageSize})
-const setCurrentPageSuccess = (currentPage) => ({type: "SET_CURRENT_PAGE", currentPage})
+const getPostsSuccess = (posts) => ({type: "POSTS_GET_POSTS", posts})
+const setPageSizeSuccess = (pageSize) => ({type: "POSTS_SET_PAGE_SIZE", pageSize})
+const setCurrentPageSuccess = (currentPage) => ({type: "POSTS_SET_CURRENT_PAGE", currentPage})
 //action creators end
 
 //thunk start

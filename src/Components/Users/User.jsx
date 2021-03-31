@@ -1,36 +1,33 @@
 import React from 'react';
+
 import s from './user.module.css'
-import {Button, Card, Avatar} from 'antd';
-import {UserOutlined, MailOutlined} from '@ant-design/icons';
+import {Card, Avatar} from 'antd';
 import {Link} from "react-router-dom";
+import FollowedButton from "./FollowedButton";
+import {UserOutlined, MailOutlined} from '@ant-design/icons';
 
 const User=React.memo( (props)=> {
     return (
         <Card style={{marginBottom: 10}}>
             <div className={s.UserHeader}>
-                <Avatar size="large" icon={<UserOutlined/>}/>
-                <div>
-                    {props.user.followed
-                        ? <Button disabled={props.followingInProgress.some(id => id === props.user.id)}
-                                  onClick={() => {
-                                      props.unfollow(props.user.id)
-                                  }}>Unfollow</Button>
-                        : <Button disabled={props.followingInProgress.some(id => id === props.user.id)}
-                                  onClick={() => {
-                                      props.follow(props.user.id)
-                                  }}>Follow</Button>
-                    }
-
+                <Avatar size="large" icon={<UserOutlined/>} />
+                <div className={s.followedMessageButton}>
+                    {props.signIn !== null &&
+                        <FollowedButton
+                            user={props.user}
+                            followingInProgress={props.followingInProgress}
+                            unfollow={props.unfollow}
+                            follow={props.follow}
+                        />}
                     <span className={s.message}>
                         <Link to={`/dialogs/${props.user.id}`}>
                         <MailOutlined />
                         </Link>
                     </span>
-
                 </div>
             </div>
-            <h2>{props.user.username}</h2>
 
+            <h2>{props.user.username}</h2>
             <b>Name</b>: {props.user.name}
             <br/>
             <b>Company</b>: {props.user.company.name}

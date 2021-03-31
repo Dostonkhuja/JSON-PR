@@ -21,12 +21,18 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
 .inputItemTextarea{
-    width: 30vw;
+    min-width: 30vw;
 }
+
 .form{
-    margin-left: 22vw;
-    width: 280px;
+    display: flex;
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+    flex-direction: column;
+    /*margin-left: 10vw;*/
+    /*width: 280px;*/
 }
 
 .signUpButton{

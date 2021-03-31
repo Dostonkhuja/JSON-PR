@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {updateCurrentPage, updatePageSize} from "../../reducers/todo-reducer";
-import {getPhotos} from "../../reducers/photos-reducer";
-import {connect} from "react-redux";
 import Photos from "./Photos";
 import {compose} from "redux";
+import {connect} from "react-redux";
+import {getPhotos} from "../../reducers/photos-reducer";
+import {updateCurrentPage, updatePageSize} from "../../reducers/todo-reducer";
+import {getPhotosCurrentPageRs, getPhotosPageSizeRs, getPhotosRs} from "../../reselect/PhotosReselect";
 
 class PhotosContainer extends React.Component {
     componentDidMount() {
@@ -12,20 +13,21 @@ class PhotosContainer extends React.Component {
     }
 
     render() {
-        return <Photos
+        return(
+            <Photos
             photos={this.props.photos}
             pageSize={this.props.pageSize}
             currentPage={this.props.currentPage}
             updatePageSize={this.props.updatePageSize}
-            updateCurrentPage={this.props.updateCurrentPage}
-        />
+            updateCurrentPage={this.props.updateCurrentPage} />
+       )
     }
 }
 
 const mapStateToProps = (state) => ({
-    photos: state.photosPage.photos,
-    pageSize: state.photosPage.pageSize,
-    currentPage: state.photosPage.currentPage,
+    photos: getPhotosRs(state),
+    pageSize: getPhotosPageSizeRs(state),
+    currentPage: getPhotosCurrentPageRs(state),
 })
 
 export default compose(

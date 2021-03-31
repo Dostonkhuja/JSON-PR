@@ -1,7 +1,8 @@
-import React, { createElement, useState } from 'react';
-import { Comment, Tooltip, Avatar } from 'antd';
+import React, {createElement, useState} from 'react';
+
 import moment from 'moment';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import {Comment, Tooltip, Avatar} from 'antd';
+import {DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled} from '@ant-design/icons';
 
 const ProfileComments = (props) => {
     const [likes, setLikes] = useState(0);
@@ -39,24 +40,15 @@ const ProfileComments = (props) => {
         <Comment
             actions={actions}
             author={props.comments.email}
-            avatar={
-                <Avatar
-                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                    alt="Han Solo"
-                />
-            }
-            content={
-                <div>
+            avatar={ <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
+            content={<div>
                     <i>{props.comments.name}</i>
                     <br/>
                     <span>{props.comments.body} </span>
-                </div>
-            }
-            datetime={
-                <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                    </div>}
+            datetime={<Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
                     <span>{moment().fromNow()}</span>
-                </Tooltip>
-            }
+                </Tooltip>}
         />
     );
 };

@@ -3,6 +3,7 @@ import MyPosts from "./MyPosts";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {addNewPost} from "../../../reducers/auth-reducer";
+import {getMyPostRs} from "../../../reselect/ProfileReselect";
 
 class MyPostsContainer extends PureComponent {
     render() {
@@ -15,7 +16,7 @@ class MyPostsContainer extends PureComponent {
 }
 
 const mapStateToProps=(state)=>({
-    myPost:state.auth.myPost,
+    myPost:getMyPostRs(state),
 })
 
 export default compose(

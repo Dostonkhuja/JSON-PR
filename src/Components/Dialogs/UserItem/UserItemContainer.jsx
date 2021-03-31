@@ -5,16 +5,11 @@ class UserItemContainer extends Component {
     componentDidMount() {
         this.props.getCurrentUser(this.props.user.id,this.props.user.username)
     }
-
     render() {
-        return (
-            <div>
-                <UserItem
+        return <UserItem
                     getCurrentUser={this.props.getCurrentUser}
                     user={this.props.user}
                 />
-            </div>
-        );
     }
 }
 

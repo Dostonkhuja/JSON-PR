@@ -1,11 +1,11 @@
 import {authAPI, profileAPI} from "../DAL/api";
 import {reset} from "redux-form";
 
-const SIGN_IN = 'SIGN_IN'
-const LOG_OUT = 'LOG_OUT'
-const SET_MY_PROFILE = 'SET_MY_PROFILE'
-const SET_USER_PHOTO = 'SET_USER_PHOTO'
-const ADD_NEW_POST = 'ADD_NEW_POST'
+const AUTH_SIGN_IN = 'AUTH_SIGN_IN'
+const AUTH_LOG_OUT = 'AUTH_LOG_OUT'
+const AUTH_SET_MY_PROFILE = 'AUTH_SET_MY_PROFILE'
+const AUTH_SET_USER_PHOTO = 'AUTH_SET_USER_PHOTO'
+const AUTH_ADD_NEW_POST = 'AUTH_ADD_NEW_POST'
 
 const initialState = {
     signIn: null,
@@ -16,15 +16,15 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_IN:
+        case AUTH_SIGN_IN:
             return {...state, signIn: action.signInPayload, isAuth: true}
-        case LOG_OUT:
+        case AUTH_LOG_OUT:
             return {...state, signIn: null, isAuth: false}
-            case SET_MY_PROFILE:
+            case AUTH_SET_MY_PROFILE:
             return {...state, signIn: action.payload, isAuth: true}
-            case SET_USER_PHOTO:
+            case AUTH_SET_USER_PHOTO:
             return {...state, userPhoto: URL.createObjectURL(action.userPhoto)}
-        case ADD_NEW_POST:
+        case AUTH_ADD_NEW_POST:
             return {...state, myPost:[...state.myPost,action.post.newPost]}
         default:
             return state
@@ -33,11 +33,11 @@ const authReducer = (state = initialState, action) => {
 };
 
 //action creators start
-const signInSuccess = (signInPayload) => ({type: SIGN_IN, signInPayload})
-const setMyProfileSuccess = (payload) => ({type: SET_MY_PROFILE, payload})
-const logoutSuccess = () => ({type: LOG_OUT})
-const setUserPhoto = (userPhoto) => ({type: SET_USER_PHOTO,userPhoto})
-const addNewPostSuccess = (post) => ({type: ADD_NEW_POST, post})
+const signInSuccess = (signInPayload) => ({type: AUTH_SIGN_IN, signInPayload})
+const setMyProfileSuccess = (payload) => ({type: AUTH_SET_MY_PROFILE, payload})
+const logoutSuccess = () => ({type: AUTH_LOG_OUT})
+const setUserPhoto = (userPhoto) => ({type: AUTH_SET_USER_PHOTO,userPhoto})
+const addNewPostSuccess = (post) => ({type: AUTH_ADD_NEW_POST, post})
 //action creators end
 
 //thunk start

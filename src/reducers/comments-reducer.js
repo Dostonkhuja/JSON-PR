@@ -1,9 +1,8 @@
-import React from 'react'
 import {commentsAPI} from "../DAL/api";
 
-const GET_COMMENTS='GET_COMMENTS'
-const SET_PAGE_SIZE = 'SET_PAGE_SIZE'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const COMMENTS_GET_COMMENTS='COMMENTS_GET_COMMENTS'
+const COMMENTS_SET_PAGE_SIZE = 'COMMENTS_SET_PAGE_SIZE'
+const COMMENTS_SET_CURRENT_PAGE = 'COMMENTS_SET_CURRENT_PAGE'
 
 const initialState={
     comments:[],
@@ -13,11 +12,11 @@ const initialState={
 
 const commentsReducer=(state=initialState,action)=>{
     switch (action.type){
-        case GET_COMMENTS:
+        case COMMENTS_GET_COMMENTS:
             return{...state, comments:action.comments}
-        case SET_PAGE_SIZE:
+        case COMMENTS_SET_PAGE_SIZE:
             return {...state, pageSize:action.pageSize}
-        case SET_CURRENT_PAGE:
+        case COMMENTS_SET_CURRENT_PAGE:
             let currentPageOrginal=action.currentPage - 1
             return {...state, currentPage:currentPageOrginal}
         default:return state
@@ -26,9 +25,9 @@ const commentsReducer=(state=initialState,action)=>{
 };
 
 //action creators start
-const getCommentsSuccess=(comments)=>({type:"GET_COMMENTS",comments})
-const setPageSizeSuccess=(pageSize)=>({type:"SET_PAGE_SIZE",pageSize})
-const setCurrentPageSuccess=(currentPage)=>({type:"SET_CURRENT_PAGE",currentPage})
+const getCommentsSuccess=(comments)=>({type:"COMMENTS_GET_COMMENTS",comments})
+const setPageSizeSuccess=(pageSize)=>({type:"COMMENTS_SET_PAGE_SIZE",pageSize})
+const setCurrentPageSuccess=(currentPage)=>({type:"COMMENTS_SET_CURRENT_PAGE",currentPage})
 //action creators end
 
 //thunk start
@@ -36,9 +35,11 @@ export const getComments=()=> async dispatch=>{
     const response= await commentsAPI.getComments()
     dispatch(getCommentsSuccess(response.data))
 }
+
 export const updatePageSize=(pageSize)=>  dispatch=>{
     dispatch(setPageSizeSuccess(pageSize));
 }
+
 export const updateCurrentPage=(currentPage)=>  dispatch=>{
     dispatch(setCurrentPageSuccess(currentPage));
 }

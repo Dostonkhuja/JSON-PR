@@ -1,16 +1,13 @@
 import React from 'react';
 
-import {Radio, Pagination, Card} from "antd";
+import {updateCurrentPage, setTodoListFilter, updatePageSize, getToDoLists, updateToDo
+} from "../../reducers/todo-reducer";
+import {getTodoListsCurrentPageRs, getPatchingInProgressRs, getTodoListsPageSizeRs, getTodoListsRs
+} from "../../reselect/ToDoListsReselect";
+import {Radio, Pagination, Card, Spin} from "antd";
 import {connect} from "react-redux";
 import ToDoList from "./ToDoList";
 import {compose} from "redux";
-import {
-    updateCurrentPage,
-    setTodoListFilter,
-    updatePageSize,
-    getToDoLists,
-    updateToDo
-} from "../../reducers/todo-reducer";
 
 class ToDoListsContainer extends React.Component {
     componentDidMount() {
@@ -23,33 +20,25 @@ class ToDoListsContainer extends React.Component {
     }
 
     render() {
-
-        if (this.props.toDoLists === null) return <div>loading...</div>
-
+        if (this.props.toDoLists === null) return <Spin size="large"/>
         return (
             <div>
-
                 <Pagination
                     showQuickJumper
-                    defaultCurrent={this.props.currentPage + 1 }
+                    defaultCurrent={this.props.currentPage + 1}
                     onChange={this.onPaginationValueChange}
                     defaultPageSize={this.props.pageSize}
                     total={this.props.toDoLists.length}
-
                 />
-
                 <Card style={{marginTop: 10}}>
                     <Radio.Group>
-
                         <Radio.Button htmlType='submit'
                                       onClick={() => this.props.setTodoListFilter(false)}>not completed</Radio.Button>
                         <Radio.Button htmlType='submit'
-                            onClick={() => this.props.setTodoListFilter(true)}>Completed</Radio.Button>
+                                      onClick={() => this.props.setTodoListFilter(true)}>Completed</Radio.Button>
                         <Radio.Button htmlType='submit'
                                       onClick={() => this.props.getToDoLists()}>All</Radio.Button>
-
                     </Radio.Group>
-
                     {
                         this.props.toDoLists
                             .slice(this.props.currentPage * this.props.pageSize,
@@ -61,21 +50,19 @@ class ToDoListsContainer extends React.Component {
                                 />
                             )
                     }
-
                 </Card>
-
             </div>
         );
     };
 }
 
 const mapStateProps = (state) => ({
-    patchingInProgress: state.toDoListsPage.patchingInProgress,
-    currentPage: state.toDoListsPage.currentPage,
-    toDoLists: state.toDoListsPage.toDoLists,
-    pageSize: state.toDoListsPage.pageSize,
+    patchingInProgress: getPatchingInProgressRs(state),
+    currentPage: getTodoListsCurrentPageRs(state),
+    pageSize: getTodoListsPageSizeRs(state),
+    toDoLists: getTodoListsRs(state),
 })
 
 export default compose(
     connect(mapStateProps, {getToDoLists, updateToDo, updatePageSize, updateCurrentPage, setTodoListFilter})
-) (ToDoListsContainer);
+)(ToDoListsContainer);

@@ -1,10 +1,9 @@
-import React from 'react'
 import {profileAPI} from "../DAL/api";
 
-const GET_PROFILE = 'GET_PROFILE'
-const GET_POSTS = 'GET_POSTS'
-const GET_COMMENTS = 'GET_COMMENTS'
-const UPDATE_COMMENTS = 'UPDATE_COMMENTS'
+const PROFILE_GET_PROFILE = 'PROFILE_GET_PROFILE'
+const PROFILE_GET_POSTS = 'PROFILE_GET_POSTS'
+const PROFILE_GET_COMMENTS = 'PROFILE_GET_COMMENTS'
+const PROFILE_UPDATE_COMMENTS = 'PROFILE_UPDATE_COMMENTS'
 
 const initialState = {
     profile: null,
@@ -14,13 +13,13 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_PROFILE:
+        case PROFILE_GET_PROFILE:
             return {...state, profile: action.profile}
-        case GET_POSTS:
+        case PROFILE_GET_POSTS:
             return {...state, posts: action.posts}
-        case GET_COMMENTS:
+        case PROFILE_GET_COMMENTS:
             return {...state, comments: [...state.comments, ...action.comments]}
-        case UPDATE_COMMENTS:
+        case PROFILE_UPDATE_COMMENTS:
             return {...state, comments: []}
         default:return state
     }
@@ -28,16 +27,18 @@ const profileReducer = (state = initialState, action) => {
 };
 
 //action creators start
-const getCommentsSuccess = (comments) => ({type: GET_COMMENTS, comments})
-const getProfileSuccess = (profile) => ({type: GET_PROFILE, profile})
-const getPostsSuccess = (posts) => ({type: GET_POSTS, posts})
-const updateComments = () => ({type: UPDATE_COMMENTS})
+const getCommentsSuccess = (comments) => ({type: PROFILE_GET_COMMENTS, comments})
+const getProfileSuccess = (profile) => ({type: PROFILE_GET_PROFILE, profile})
+const getPostsSuccess = (posts) => ({type: PROFILE_GET_POSTS, posts})
+const updateComments = () => ({type: PROFILE_UPDATE_COMMENTS})
 //action creators end
 
 //thunk start
 export const getProfile = (userId) => async dispatch => {
     const response = await profileAPI.getProfile(userId)
-    dispatch(getProfileSuccess(response.data))
+    if(response.status === 200) {
+        dispatch(getProfileSuccess(response.data))
+    }
 }
 export const getPosts = (userId) => async dispatch => {
     const response = await profileAPI.getPosts(userId)
