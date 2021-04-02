@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/ToDoLists/todo.module.css"],"names":[],"mappings":"AAAA,sBACI,gBACJ,CAEA,4CACI,wBACI,YACJ,CACJ","file":"4.2335d676.chunk.css","sourcesContent":[".checkBox{\r\n    padding-top: 10px;\r\n}\r\n\r\n@media (min-width: 0)and (max-width: 768.9px) {\r\n    .toDoNumber{\r\n        display: none;\r\n    }\r\n}"]}
