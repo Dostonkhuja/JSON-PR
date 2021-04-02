@@ -4,7 +4,8 @@ import {updateCurrentPage, setTodoListFilter, updatePageSize, getToDoLists, upda
 } from "../../reducers/todo-reducer";
 import {getTodoListsCurrentPageRs, getPatchingInProgressRs, getTodoListsPageSizeRs, getTodoListsRs
 } from "../../reselect/ToDoListsReselect";
-import {Radio, Pagination, Card, Spin} from "antd";
+import Preloader from "../common/Preloader/Preloader";
+import {Radio, Pagination, Card} from "antd";
 import {connect} from "react-redux";
 import ToDoList from "./ToDoList";
 import {compose} from "redux";
@@ -20,7 +21,7 @@ class ToDoListsContainer extends React.Component {
     }
 
     render() {
-        if (this.props.toDoLists === null) return <Spin size="large"/>
+        if (this.props.toDoLists === null) return <Preloader />
         return (
             <div>
                 <Pagination

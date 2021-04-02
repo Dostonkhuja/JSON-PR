@@ -1,5 +1,3 @@
-import {signInRequest} from "./auth-reducer";
-
 const INITIALIZED_SUCCSESS = 'INITIALIZED_SUCCSESS'
 
 let initialState = {
@@ -17,11 +15,7 @@ const appReducer = (state = initialState, action) => {
 export const initializedSuccsess = () => ({type: INITIALIZED_SUCCSESS})
 
 export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(signInRequest())
-    Promise.all([promise])
-        .then(() => {
-            dispatch(initializedSuccsess())
-        })
+    dispatch(initializedSuccsess())
 }
 
 export default appReducer;

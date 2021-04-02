@@ -1,5 +1,6 @@
 .title{
-    margin-left: 7.5vw;
+    font-size: 36px;
+    color: #1890ff;
     margin-bottom: 1vw;
 }
 
@@ -15,35 +16,73 @@
 }
 
 .inputItem{
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 1vw;
+    width: 40vw;
+}
+
+.inputItem span{
+    font-size: 14px;
 }
 
 .inputItemTextarea{
-    min-width: 30vw;
+    width: 40vw;
+    margin-bottom: 2vw;
+}
+
+.myPost{
+    width: 40vw;
+    margin-bottom: 2vw;
 }
 
 .form{
+    padding-top: 2.5vw;
     display: flex;
-    /*justify-content: space-between;*/
-    /*align-items: center;*/
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    /*margin-left: 10vw;*/
-    /*width: 280px;*/
+}
+
+.formItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+}
+
+.formItemInput{
+    width: 50vw;
 }
 
 .signUpButton{
-    margin-top: 1vw;
-    margin-left: 7.5vw;
+    margin-top: 2vw;
+   margin-bottom: 2vw;
 }
 
-.rememberMe{
-    margin-left: 7vw;
-}
 
 .wrapperFormData{
     width: 280px;
+}
+
+.endForm{
+    background-color: #ffffff;
+    height:100%;
+}
+
+.commentsLike{
+    opacity: 0.6;
+    font-size: 12px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 4vw;
+    margin-bottom: -20px;
+}
+
+
+@media (min-width: 0)and (max-width:768.9px) {
+    .inputItemTextarea{
+        width:100%;
+    }
+    .myPost{
+         width: 100%;
+     }
 }

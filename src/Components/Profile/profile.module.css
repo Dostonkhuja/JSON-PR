@@ -1,6 +1,7 @@
 .mainPhoto{
     width: 100px;
 }
+
 .comments{
     cursor: pointer;
 }
@@ -8,4 +9,37 @@
 .commentsLike{
     display:flex;
     justify-content: space-between;
+}
+
+.profileData{
+    margin-top: 0.5vw;
+    margin-bottom: 2vw;
+}
+
+.profileHeader{
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileData button{
+    margin-top: 0.5vw;
+    margin-bottom: 1vw;
+}
+
+.profileDataItem{
+    margin-left: 2vw;
+    font-size: 18px;
+}
+
+@media (min-width: 0)and (max-width:768.9px) {
+    .profileHeader{
+        width: 100%;
+       display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -7,7 +7,6 @@ import {
     OrderedListOutlined,
     PictureOutlined,
     UsergroupDeleteOutlined,
-    RightSquareOutlined
 } from "@ant-design/icons";
 import {Link} from "react-router-dom";
 import s from './navbarResponsive.module.css'
@@ -30,13 +29,13 @@ const NavbarMobile = () => {
             onClose={onClose}
             visible={visible}
         >
-
+            <div  className={s.menuItem}>
             <Menu
                 mode="inline"
                 style={{height: '100%',marginBottom:"20px"}}
-                defaultSelectedKeys={"0"}
+                defaultSelectedKeys={"1"}
             >
-                <Menu.Item key="1" icon={<UsergroupDeleteOutlined/>}>
+                <Menu.Item  key="1" icon={<UsergroupDeleteOutlined/>}>
                     <Link to='/profile'> Profile </Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<UsergroupDeleteOutlined/>}>
@@ -61,16 +60,13 @@ const NavbarMobile = () => {
                     <Link to='/comments'> Comments </Link>
                 </Menu.Item>
             </Menu>
+        </div>
         </Drawer>
     <Row>
         <Col xl={0} lg={0} md={0} sm={24} xs={24}>
             <AlignRightOutlined onClick={showDrawer}/>
-            <span className={s.openMenu}>
-                <RightSquareOutlined onClick={showDrawer} style={{ fontSize: '30px'}}/>
-            </span>
         </Col>
     </Row>
-
     </>
     );
 };

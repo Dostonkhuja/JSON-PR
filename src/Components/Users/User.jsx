@@ -8,7 +8,7 @@ import {UserOutlined, MailOutlined} from '@ant-design/icons';
 
 const User=React.memo( (props)=> {
     return (
-        <Card style={{marginBottom: 10}}>
+        <Card style={{marginTop: 10}}>
             <div className={s.UserHeader}>
                 <Avatar size="large" icon={<UserOutlined/>} />
                 <div className={s.followedMessageButton}>

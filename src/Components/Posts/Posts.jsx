@@ -1,17 +1,17 @@
 import React from 'react';
 
 import Post from "./Post";
-import {Pagination, Spin} from "antd";
+import {Pagination} from "antd";
+import Preloader from "../common/Preloader/Preloader";
 
 const Posts = (props) => {
-    if (props.posts === null) {
-        return <Spin size="large"/>
-    }
+    if (props.posts === null) {return <Preloader />}
 
     let onPaginationValueChange = (pageNumber, pageSize,) => {
         props.updateCurrentPage(pageNumber)
         props.updatePageSize(pageSize)
     }
+
     return (
         <div>
             <Pagination

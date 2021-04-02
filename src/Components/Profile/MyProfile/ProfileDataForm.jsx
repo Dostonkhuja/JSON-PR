@@ -1,9 +1,10 @@
 import React from 'react'
+
+import {Button} from "antd";
 import {reduxForm} from "redux-form";
 import s from '../../Login/login.module.css'
-import {Button} from "antd";
-import {createField, Input2} from "../../common/FormsControls/FormsControls";
 import {required} from "../../../utils/validators/validators";
+import {createField, Input2} from "../../common/FormsControls/FormsControls";
 
 const ProfileDataForm = ({handleSubmit, error,}) => {
     return (<>
@@ -46,6 +47,7 @@ const ProfileDataForm = ({handleSubmit, error,}) => {
         </>
     )
 }
+
 const ProfileDataReduxForm = React.memo(reduxForm({form: "edit-profile"})(ProfileDataForm))
 
 export default ProfileDataReduxForm;

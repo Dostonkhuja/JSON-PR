@@ -1,10 +1,12 @@
 import React from 'react';
+
 import Album from "./Album";
-import s from './albums.module.css'
 import {Pagination} from "antd";
+import s from './albums.module.css'
+import Preloader from "../common/Preloader/Preloader";
 
 const Albums = (props) => {
-    if(props.albums === null){return <div>Loading...</div>}
+    if(props.albums === null){return  <Preloader />}
     let onPaginationValueChange=(pageNumber, pageSize,)=> {
         props.updateCurrentPage(pageNumber)
         props.updatePageSize(pageSize)

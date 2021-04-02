@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {Carousel, Pagination, Spin} from 'antd';
-import s from './photos.module.css'
-import Photo from "./Photo";
 import 'antd/dist/antd.css'
+import Photo from "./Photo";
+import s from './photos.module.css'
+import {Carousel, Pagination} from 'antd';
+import Preloader from "../common/Preloader/Preloader";
 
 const Photos = (props) => {
-    if  (props.photos.length<1) {
-        return <Spin size="large" />
-    }
+
+    if  (props.photos.length<1) {return <Preloader/>}
 
     const onPaginationValueChange=(pageNumber, pageSize,)=> {
         props.updateCurrentPage(pageNumber)
@@ -20,7 +20,7 @@ const Photos = (props) => {
             <Pagination
                 showQuickJumper
                 defaultCurrent={1}
-                defaultPageSize={20}
+                defaultPageSize={50}
                 total={props.photos.length}
                 onChange={onPaginationValueChange}
             />

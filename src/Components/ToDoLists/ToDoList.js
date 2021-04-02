@@ -9,7 +9,7 @@ const ToDoList = (props) => {
     }
 
     return <div className={s.checkBox}>
-            <span style={{marginRight:'10px'}}>
+            <span className={s.toDoNumber} style={{marginRight:'10px'}}>
             {props.toDoList.id}.
             </span>
             <Checkbox

@@ -1,3 +1,9 @@
 .checkBox{
     padding-top: 10px;
 }
+
+@media (min-width: 0)and (max-width: 768.9px) {
+    .toDoNumber{
+        display: none;
+    }
+}

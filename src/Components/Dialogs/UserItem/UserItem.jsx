@@ -10,6 +10,7 @@ const UserItem = React.memo((props) => {
 
     return <div className={s.userMessages} onClick={onSendingCurrentUser}>
                 <Avatar
+                    className={s.avatar}
                     style={{
                         backgroundColor:'orange',
                         marginRight:"7px",

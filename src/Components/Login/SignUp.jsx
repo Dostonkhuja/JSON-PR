@@ -14,36 +14,47 @@ import {createField, Input2} from "../common/FormsControls/FormsControls";
 const LoginForm = ({handleSubmit,...props}) => {
 
     return (<form className={s.form} onSubmit={handleSubmit}>
-            <h1 className={s.title}>SIGN UP</h1>
+            <h1 className={s.title}>Sign Up</h1>
             <div className={s.inputItem}>
-                <span> User name: </span> {createField("User name",'username',[required],Input2)}
+                <span> User name: </span> <br/>
+                {createField("User name",'username',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> Name: </span> {createField("Name",'name',[required],Input2)}
+                <span> Name: </span> <br/>
+                {createField("Name",'name',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> Company:</span> {createField("Company",'company',[required],Input2)}
+                <span> Company:</span>  <br/>
+                {createField("Company",'company',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> Catch phrase:</span> {createField("Catch phrase",'catchPhrase',[required],Input2)}
+                <span> Catch phrase:</span>  <br/>
+                {createField("Catch phrase",'catchPhrase',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> Bs:</span>  {createField("Bs",'bs',[required],Input2)}
+                <span> Bs:</span>   <br/>
+                {createField("Bs",'bs',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> Adress:</span> {createField("Adress",'adress',[required],Input2)}
+                <span> Adress:</span> <br/>
+                {createField("Adress",'adress',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> email:</span>{createField("email",'email',[required],Input2)}
+                <span> email:</span> <br/>
+                {createField("email",'email',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span> web site:</span> {createField("web site",'webSite',[required],Input2)}
+                <span> web site:</span>  <br/>
+                {createField("web site",'webSite',[required],Input2)}
             </div>
             <div className={s.inputItem}>
-                <span>phone:</span> {createField("phone",'phone',[required],Input2)}
+                <span>phone:</span> <br/>
+                {createField("phone",'phone',[required],Input2)}
             </div>
 
-            <div className={s.signUpButton}> <Button type={'primary'} htmlType="submit">SIGN UP</Button> </div>
+            <div className={s.inputItem}>
+                <Button className={s.signUpButton} block type={'primary'} htmlType="submit">Sign Up</Button>
+            </div>
             {props.error && <div>{props.error}</div>}
         </form>
     );
@@ -62,9 +73,9 @@ const SignUp = ({setMyProfile,isAuth}) => {
         return <Redirect to={'/profile'} />
     }
 
-    return (<>
+    return (<div className={s.endForm}>
             <ReduxLoginForm onSubmit={onSubmit} />
-        </>
+        </div>
     );
 };
 

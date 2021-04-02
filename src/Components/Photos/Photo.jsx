@@ -9,8 +9,8 @@ const Photo = (props) => {
     return (
         <div className={s.photo}>
             <Card hoverable style={{width: 230}}>
-                <Image width={182} src={props.photos.url}/>
-                <Meta title={props.photos.title}/>
+                <Image width={182} src={props.photos.url} />
+                <Meta title={props.photos.title} />
             </Card>
         </div>
     );

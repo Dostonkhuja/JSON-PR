@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import UserItem from "./UserItem";
 
 class UserItemContainer extends Component {

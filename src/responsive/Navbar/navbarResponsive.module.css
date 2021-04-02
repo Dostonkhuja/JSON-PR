@@ -7,16 +7,9 @@
     width: 50px;
 }
 
-.openMenu{
-    z-index: 15;
-    position:fixed;
-    left: 25px;
-    top: 300px;
-    color: #1890ff;
-    opacity: 0.3;
-    transition: 0.3s;
-}
-
-.openMenu:hover{
-    opacity: 0.7;
+.menuItem{
+    width: 119.5%;
+    margin-top: -20px;
+    margin-left: -20px;
+    height: 100%;
 }

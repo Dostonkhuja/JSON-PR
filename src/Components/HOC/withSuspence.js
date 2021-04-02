@@ -1,9 +1,9 @@
 import React from 'react'
-import {Spin} from "antd";
+import Preloader from "../common/Preloader/Preloader";
 
 const withSuspense = (Component) => {
     return (props)=> {
-        return <React.Suspense fallback={<Spin/>}> <Component {...props}/> </React.Suspense>
+        return <React.Suspense fallback={<Preloader />}> <Component {...props}/> </React.Suspense>
     }
 };
 

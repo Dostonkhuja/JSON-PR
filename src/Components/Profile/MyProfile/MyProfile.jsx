@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import s from '../profile.module.css'
+
 import {Button, Card} from "antd";
+import s from '../profile.module.css'
 import ProfileData from "./ProfileData";
-import ProfileDataReduxForm from "./ProfileDataForm";
-import UserPhotoUndifined from '../../assets/images/images.png'
 import {UploadOutlined} from '@ant-design/icons';
+import ProfileDataReduxForm from "./ProfileDataForm";
 import MyPostsContainer from "../MyPosts/MyPostsContainer";
+import UserPhotoUndifined from '../../assets/images/images.png'
 
 const MyProfile = React.memo( (props) => {
     const [editMode, setEditMode] = useState(false)
@@ -21,7 +22,8 @@ const MyProfile = React.memo( (props) => {
 
     return (
         <div>
-            <Card style={{}}>
+            <Card>
+
                 <div className={s.profileHeader}>
                     <img src={props.userPhoto !== null ? props.userPhoto : UserPhotoUndifined} className={s.mainPhoto}/>
                     <br/>

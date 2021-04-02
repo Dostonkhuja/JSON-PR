@@ -1,4 +1,5 @@
 import {Layout, Menu} from "antd";
+import s from './sidebar.module.css'
 import {Link} from "react-router-dom";
 import {
     UsergroupDeleteOutlined, OrderedListOutlined, CommentOutlined,
@@ -9,8 +10,9 @@ const {Sider} = Layout;
 
 const Sidebar = () => {
     return (
-        <Sider style={{height: '100%'}} className="site-layout-background" width={200}>
-            <Menu mode="inline" style={{height: '100%'}} defaultSelectedKeys={"0"}>
+        <Sider style={{height: '100%',backgroundColor:'white'}} className="site-layout-background" width={200}>
+            <div className={s.csad}>
+            <Menu  mode="inline" style={{height: '100%'}} defaultSelectedKeys={"0"}>
 
                 <Menu.Item key="1" icon={<UsergroupDeleteOutlined/>}>
                     <Link to='/profile'> Profile </Link>
@@ -25,7 +27,7 @@ const Sidebar = () => {
                 </Menu.Item>
 
                 <Menu.Item key="4" icon={<OrderedListOutlined/>}>
-                    <Link to='/todos'> Todos </Link>
+                    <Link to='/todos'> To do list </Link>
                 </Menu.Item>
 
                 <Menu.Item key="5" icon={<PictureOutlined/>}>
@@ -45,6 +47,7 @@ const Sidebar = () => {
                 </Menu.Item>
 
             </Menu>
+            </div>
         </Sider>
     )
 }

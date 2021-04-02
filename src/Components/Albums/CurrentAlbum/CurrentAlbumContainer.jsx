@@ -1,9 +1,10 @@
 import React from 'react';
+
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getPhotosAlbum} from "../../../reducers/albums-reducer";
-import AlbumPhotos from "./AlbumPhotos";
 import {Link} from "react-router-dom";
+import AlbumPhotos from "./AlbumPhotos";
+import {getPhotosAlbum} from "../../../reducers/albums-reducer";
 import {getPhotosAlmubsRs} from "../../../reselect/AlbumsReselect";
 
 class CurentAlbumContainer extends React.Component {

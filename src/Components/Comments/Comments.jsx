@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Comment from "./Comment";
-import {Pagination,Spin} from "antd";
+import {Pagination} from "antd";
+import Preloader from "../common/Preloader/Preloader";
 
 const Comments = (props) => {
-    if(props.comments===null){return <Spin size="large" />}
+    if(props.comments===null){return  <Preloader />}
     let onPaginationValueChange=(pageNumber, pageSize,)=> {
         props.updateCurrentPage(pageNumber)
         props.updatePageSize(pageSize)

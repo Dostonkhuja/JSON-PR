@@ -1,33 +1,35 @@
 import React from "react";
+
+import s from '../profile.module.css'
 import {Button} from "antd";
 
 const ProfileData =React.memo( ({profile,isOwner,goToEditMode,signIn}) => {
-    return ( <div>
+    return ( <div className={s.profileData}>
         <br/>
         { <div><Button onClick={goToEditMode}>Edit Profile</Button></div> }
         <div>
-            <b> Name :</b> {signIn !== null&& signIn.profile.name}
+            <span className={s.profileDataItem}> Name :</span> {signIn !== null&& signIn.profile.name}
         </div>
         <div>
-            <b> Company :</b>  {signIn !== null&& signIn.profile.company}
+            <span className={s.profileDataItem}> Company :</span>  {signIn !== null&& signIn.profile.company}
         </div>
         <div>
-            <b> Catch phrase :</b>  {signIn !== null&& signIn.profile.catchPhrase}
+            <span className={s.profileDataItem}> Catch phrase :</span>  {signIn !== null&& signIn.profile.catchPhrase}
         </div>
         <div>
-            <b> Bs :</b>  {signIn !== null && signIn.profile.bs}
+            <span className={s.profileDataItem}> Bs :</span>  {signIn !== null && signIn.profile.bs}
         </div>
         <div>
-            <b> Adress :</b>  {signIn !== null&& signIn.profile.adress}
+            <span className={s.profileDataItem}> Adress :</span>  {signIn !== null&& signIn.profile.adress}
         </div>
         <div>
-            <b> email :</b>  {signIn !== null&& signIn.profile.email}
+            <span className={s.profileDataItem}> email :</span>  {signIn !== null&& signIn.profile.email}
         </div>
         <div>
-            <b> web site :</b>  {signIn !== null&& signIn.profile.webSite}
+            <span className={s.profileDataItem}> web site :</span>  {signIn !== null&& signIn.profile.webSite}
         </div>
         <div>
-            <b>phone :</b>  {signIn !== null&& signIn.profile.phone}
+            <span className={s.profileDataItem}>phone :</span>  {signIn !== null&& signIn.profile.phone}
         </div>
     </div> )
 })

@@ -16,7 +16,7 @@ const photosReducer = (state = initialState, action) => {
             return {...state, photos: action.photo}
         case PHOTOS_SET_PAGE_SIZE:
             return {...state, pageSize: action.pageSize}
-        case PHOTOS_SET_CURRENT_PAGE:
+        case PHOTOS_SET_CURRENT_PAGE: debugger
             let currentPageOrginal = action.currentPage - 1
             return {...state, currentPage: currentPageOrginal}
 
@@ -27,9 +27,9 @@ const photosReducer = (state = initialState, action) => {
 };
 
 //action creators start
-const getPhotoSuccess = (photo) => ({type: "PHOTOS_GET_PHOTOS", photo})
-const setPageSizeSuccess = (pageSize) => ({type: "PHOTOS_SET_PAGE_SIZE", pageSize})
-const setCurrentPageSuccess = (currentPage) => ({type: "PHOTOS_SET_CURRENT_PAGE", currentPage})
+const getPhotoSuccess = (photo) => ({type: PHOTOS_GET_PHOTOS, photo})
+const setPageSizeSuccess = (pageSize) => ({type: PHOTOS_SET_PAGE_SIZE, pageSize})
+const setCurrentPageSuccess = (currentPage) => ({type: PHOTOS_SET_CURRENT_PAGE, currentPage})
 //action creators end
 
 //thunk start

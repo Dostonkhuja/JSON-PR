@@ -41,3 +41,11 @@
     font-size: 18px;
     color: black;
 }
+
+@media (min-width: 0)and (max-width: 768.9px) {
+    .header{
+        z-index: 250;
+        position: sticky;
+        top: 0;
+    }
+}

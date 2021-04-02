@@ -49,8 +49,8 @@ const todoListReducer = (state = initialState, action) => {
 };
 
 //action creators start
-const setCurrentPageSuccess = (currentPage) => ({type: TODO_SET_CURRENT_PAGE, currentPage})
 const changeToDolistSuccess = (payload, set) => ({type: TODO_CHANGE_TODO_LIST, payload, set})
+const setCurrentPageSuccess = (currentPage) => ({type: TODO_SET_CURRENT_PAGE, currentPage})
 const getTodoListSuccess = (todoLists) => ({type: TODO_GET_TODO_LISTS, todoLists})
 const setPageSizeSuccess = (pageSize) => ({type: TODO_SET_PAGE_SIZE, pageSize})
 const setToDoList = (payload) => ({type: TODO_SET_TODO_LIST, payload})

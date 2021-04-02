@@ -7,10 +7,8 @@
 
 .dialogsMonitor{
     overflow:scroll;
-    /*overflow-x: hidden;*/
     display: inline-block;
     vertical-align: bottom;
-    border-bottom: 1px solid #367ccd;
     border-top: 1px solid #367ccd;
     padding-top: 10px;
     height: 320px;
@@ -20,21 +18,21 @@
 .dialogsSending{
     display: flex;
     flex-direction: column;
-    width: 42vw;
+    width: 70%;
     margin-left: 1vw;
-    border: 1px solid #367ccd;
 }
 
 .dialogsMonitor::-webkit-scrollbar-thumb{
     border-left: 5px solid #c1c1c1;
 }
+
 .dialogsMonitor::-webkit-scrollbar{
     width: 5px;
 }
+
 .dialogsUsers{
-    width: 50%;
-    border: 1px solid #367ccd;
-    /*border-radius: 10px;*/
+    width: 30%;
+    /*border: 1px solid #367ccd;*/
 }
 
 .userMessages{
@@ -86,4 +84,24 @@ height: 50px;
     font-weight: bold;
     font-size: 14px;
     color: #8aedfd;
+}
+
+.avatar{
+}
+
+@media (min-width: 0)and (max-width:1199.9px) {
+    .dialogsUsers{
+        overflow: hidden;
+        width:25%;
+    }
+    .dialogsSending{
+        width: 75%;
+    }
+    .avatar{
+        display: none;
+    }
+    .userMessages{
+        margin:5px;
+        overflow: hidden;
+    }
 }
