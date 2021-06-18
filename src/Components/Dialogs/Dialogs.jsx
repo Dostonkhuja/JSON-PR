@@ -10,9 +10,9 @@ const Dialogs = React.memo((props) => {
             <div className={s.dialogsUsers}>
                 {
                     props.userMessages.length !==0 && props.userMessages
-                    .map(um => <UserItemContainer
-                        key={um.id || 99} user={um} getCurrentUser={props.getCurrentUser}
-                    />)
+                        .map(um => <UserItemContainer
+                            key={um.id || 99} user={um} getCurrentUser={props.getCurrentUser}
+                        />)
                 }
             </div>
             <div className={s.dialogsSending}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from "../Profile";
 import ProfilePost from "./ProfilePost";
-import Preloader from "../../common/Preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader.tsx";
 
 const OtherProfile = React.memo( (props) => {
     if (props.profile === null || props.posts === null) {
